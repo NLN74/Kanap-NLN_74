@@ -47,7 +47,7 @@ let reponse = await fetch('http://localhost:3000/api/products/'+ leId)
 
 
         
-
+        
 
         //titre de la page
         const titleName = valeurs.name;
@@ -58,13 +58,13 @@ let reponse = await fetch('http://localhost:3000/api/products/'+ leId)
         //Mettre les information du kanap dans le local storage
 
         const addToCart = document.getElementById('addToCart');
-
+        
         const quantity = document.getElementById('quantity');
-
+        
         addToCart.addEventListener('click', function(event){
             event.preventDefault()
 
-    
+            
 
             let contenant = {
                 objectId: valeurs._id,
@@ -90,7 +90,7 @@ let reponse = await fetch('http://localhost:3000/api/products/'+ leId)
                produitPanier.push(contenant);
                localStorage.setItem('Canap', JSON.stringify(produitPanier));
             }
-
+            alert(quantity.value + " " + valeurs.name + " ajoutés au panier!!");
         });
          
         
