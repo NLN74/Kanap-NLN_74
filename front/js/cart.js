@@ -1,16 +1,16 @@
 
-    //récupération des la key Canap avec c'est object
-    let produitPanier = JSON.parse(localStorage.getItem("Canap"));
+//récupération des la key Canap avec c'est object
+let produitPanier = JSON.parse(localStorage.getItem("Canap"));
 
 
-    //mise en place de l'HTML
-        for(let i = 0; i < produitPanier.length; i++){  
-            
-                const doc = document.getElementById('cart__items')
-                
-                
-                doc.innerHTML += 
-                             `<article class="cart__item" data-id="${produitPanier[i].objectId}" data-color="${produitPanier[i].objectColors}">
+//mise en place de l'HTML
+for (let i = 0; i < produitPanier.length; i++) {
+
+    const doc = document.getElementById('cart__items')
+
+
+    doc.innerHTML +=
+        `<article class="cart__item" data-id="${produitPanier[i].objectId}" data-color="${produitPanier[i].objectColors}">
                 <div class="cart__item__img">
                     <img src="${produitPanier[i].objectUrl}" alt="Photographie d un canapé">
                 </div>
@@ -32,32 +32,32 @@
                 </div>
             </article>`;
 
-            const quantity = document.getElementById('quantity');
-
-            
-            quantity.addEventListener('change', function(){
-
-              
-
-            })
-
-        }
+    const quantity = document.getElementById('quantity');
 
 
-        let prixTotalCalcul = [];
-        let numberTotalOfProduit = [];
-for(let f = 0; f < produitPanier.length; f++){
+    quantity.addEventListener('change', function () {
+
+
+
+    })
+
+}
+
+
+let prixTotalCalcul = [];
+let numberTotalOfProduit = [];
+for (let f = 0; f < produitPanier.length; f++) {
 
 
     let priceProduit = produitPanier[f].objectPrice * produitPanier[f].objectNumber;
 
     //Utilisation de parseInt pour retirer les string
-    let numberOfProduit= parseInt(produitPanier[f].objectNumber, 10);
+    let numberOfProduit = parseInt(produitPanier[f].objectNumber, 10);
 
     //Mettre les prix dans un tableau
     prixTotalCalcul.push(priceProduit);
     numberTotalOfProduit.push(numberOfProduit);
-    
+
 
 
 }
