@@ -69,11 +69,9 @@ let reponse = await fetch('http://localhost:3000/api/products/' + idObject)
 
             let contenant = {
                 objectId: listObject._id,
-                objectName: listObject.name,
                 objectNumber: parseInt(quantity.value, 0),
                 objectColors: colors.value,
-                objectUrl: listObject.imageUrl,
-                objectPrice: listObject.price
+
             };
 
 
