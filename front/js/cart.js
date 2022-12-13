@@ -52,45 +52,35 @@ function panier() {
 
                 //Prix total + Nombre total d'article
 
-                let prixTotalCalcul = [];
-                let numberTotalOfProduit = [];
 
-                function prixTotal_nombreArticle() {
+                function displayTotalPriceAndQuantity() {
+                    let prixTotalDavid = 0;
+                    let quantityTotalDavid = 0;
                     for (let f = 0; f < produitPanier.length; f++) {
 
 
                         let priceProduit = value.price * produitPanier[f].objectNumber;
+                        prixTotalDavid = prixTotalDavid + priceProduit
 
                         //Utilisation de parseInt pour retirer les string
-                        let numberOfProduit = parseInt(produitPanier[f].objectNumber, 10);
+                        let numberOfProduit = parseInt(produitPanier[f].objectNumber);
 
-                        //Mettre les prix dans un tableau
-                        prixTotalCalcul.push(priceProduit);
-                        numberTotalOfProduit.push(numberOfProduit);
-
-
-
+                        quantityTotalDavid = quantityTotalDavid + numberOfProduit;
 
                     };
 
-
-                    //Calcul pour le total des Canapé ainsi que du nombre de Canapé
-                    const reducer = (accumulator, currentValue) => accumulator + currentValue;
-                    const prixTotal = prixTotalCalcul.reduce(reducer);
-                    const numberTotal = numberTotalOfProduit.reduce(reducer);
-
                     //Prix total des Canapé
                     const totalPrice = document.getElementById('totalPrice');
-                    totalPrice.innerHTML = prixTotal;
+                    totalPrice.innerHTML = prixTotalDavid;
 
                     //Total du nombre de Canapé
                     const totalQuantity = document.getElementById('totalQuantity');
-                    totalQuantity.innerHTML = numberTotal;
+                    totalQuantity.innerHTML = quantityTotalDavid;
 
 
                 };
 
-                prixTotal_nombreArticle();
+                displayTotalPriceAndQuantity();
 
 
 
@@ -99,45 +89,64 @@ function panier() {
 
                 function deleteProductAndModify() {
 
-                    let deleteItem = document.querySelectorAll('.deleteItem')
+                    
 
                     let getClassQuantity = document.querySelectorAll('.itemQuantity');
 
+
+                    
+
                     for (let j = 0; j < produitPanier.length; j++) {
+
+                        let deleteItem = document.querySelectorAll('.deleteItem')
+                        console.log(deleteItem)
+
+
                         deleteItem[j].addEventListener("click", (event) => {
-
+                            
                             event.preventDefault();
+                            const cart__item = deleteItem[j].closest('.cart__item')
+          
+                            let idDelete = cart__item.dataset.id;
+                            let colorDelete = cart__item.dataset.color;
 
-                            let idDelete = produitPanier[j].objectId;
-                            let colorDelete = produitPanier[j].objectColors;
 
                             produitPanier = produitPanier.filter(el => el.objectId !== idDelete || el.objectColors !== colorDelete);
 
                             localStorage.setItem("Canap", JSON.stringify(produitPanier))
 
-                            alert("Ce produit a bien été supprimé du panier");
-                            location.reload();
+                            
+                            alert('produit bien supprimer');
+                            
+                            
 
+                            const cart_item = document.querySelector('.cart__item')
+
+                            cart_item.remove();
+
+                           
                         });
 
+                    
 
-
+                        
+                        
+                       
 
 
                         getClassQuantity[j].addEventListener('change', function (event) {
+
                             event.preventDefault();
+                            
                             const getIdQuantity = document.getElementById('quantity')
                             const valueInputKanap = getClassQuantity[j].value;
 
                             getClassQuantity[j].setAttribute('value', valueInputKanap)
 
+                            produitPanier[j].objectNumber = parseInt(valueInputKanap);
+                            localStorage.setItem('Canap', JSON.stringify(produitPanier))
 
-                            const changeQuantity = JSON.parse(localStorage.getItem('Canap', produitPanier));
-
-                            changeQuantity[j].objectNumber = parseInt(valueInputKanap);
-
-                            localStorage.setItem('Canap', JSON.stringify(changeQuantity))
-
+                            displayTotalPriceAndQuantity();
 
                         });
 
@@ -145,12 +154,50 @@ function panier() {
 
                     }
 
+                    
+
                 };
 
                 deleteProductAndModify();
 
 
 
+                function initFormAddEventListener() {
+
+                    const order = document.getElementById('order');
+
+
+
+
+                    order.addEventListener('click', function () {
+
+                        let firstName = document.getElementById('firstName').value;
+                        let lastName = document.getElementById('lastName').value;
+                        let address = document.getElementById('address').value;
+                        let city = document.getElementById('city').value;
+                        let email = document.getElementById('email').value;
+
+
+
+                        let contact = {
+
+                            prenom: firstName,
+                            nom: lastName,
+                            addresse: address,
+                            ville: city,
+                            e_mail: email
+
+                        };
+
+                        console.log(contact)
+
+                    });
+
+
+
+                }
+
+                initFormAddEventListener();
 
 
 
