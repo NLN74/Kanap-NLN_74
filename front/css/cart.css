@@ -111,10 +111,16 @@ h2 {
 	outline: none;
 }
 .cart__order__form__question p {
-	margin: 0;
-	color: #fbbcbc;
-	font-size: 15px;
+	margin: 0em 0 0 0;
+	color: black;
+	font-size: 14px;
+	background-color: rgb(255, 255, 255);
+	padding: 0.8em 0em 0.8em 1em;
+	border-radius: 1em;
+	box-shadow: 1px 1px 10px gray;
+	width: 25em;
 	margin-left: 8px;
+	display: none;
 }
 .cart__order__form__submit {
 	display: flex;
