@@ -124,6 +124,7 @@ function panier() {
 
                             cart_item.remove();
 
+                            location.reload();
 
                         });
 
@@ -166,150 +167,209 @@ function panier() {
 
                 const cart_order_from_question = document.querySelectorAll('.cart__order__form__question');
 
-                function validator(){
-                //Input prénom test
+                
+                    //Input prénom test
 
-                let firstNameInput = document.getElementById('firstName');
-                let firstNameErrorMsg = document.getElementById('firstNameErrorMsg');
+                    let firstNameInput = document.getElementById('firstName');
+                    let firstNameErrorMsg = document.getElementById('firstNameErrorMsg');
+                    firstNameInput.addEventListener('change', function firstNameInputValidator() {
 
+                        let regexName = new RegExp("^[\\D](\\w+)[\\D]$")
+                        let firstNameValue = firstNameInput.value;
 
+                        console.log(regexName.test(firstNameValue))
 
+                        if (regexName.test(firstNameValue)) {
+                            firstNameErrorMsg.style.display = 'none';
+                        } else {
+                            firstNameErrorMsg.style.display = 'block';
+                            firstNameErrorMsg.innerHTML = 'Veuillez saisir un prénom valide';
+                        }
+                    });
 
-                firstNameInput.addEventListener('change', function firstNameInputValidator() {
+                    //Input nom test
 
-                    let regexName = new RegExp("^[\\D](\\w+)[\\D]$")
-                    let firstNameValue = firstNameInput.value;
+                    let lastNameInput = document.getElementById('lastName');
+                    let lastNameInputError = document.getElementById('lastNameErrorMsg');
 
-                    console.log(regexName.test(firstNameValue))
+                    lastNameInput.addEventListener('change', function lastNameInputValidator() {
 
-                    if (regexName.test(firstNameValue)) {
-                        firstNameErrorMsg.style.display = 'none';
-                    } else {
-                        firstNameErrorMsg.style.display = 'block';
-                        firstNameErrorMsg.innerHTML = 'Veuillez saisir un prénom valide';
-                    }
-                });
+                        let regexName = new RegExp("^[\\D](\\w+)[\\D]$")
+                        let lastNameValue = lastNameInput.value;
 
-                //Input nom test
+                        console.log(regexName.test(lastNameValue))
 
-                let lastNameInput = document.getElementById('lastName');
-                let lastNameInputError = document.getElementById('lastNameErrorMsg');
+                        if (regexName.test(lastNameValue)) {
+                            lastNameInputError.style.display = 'none';
+                        } else {
+                            lastNameInputError.style.display = 'block';
+                            lastNameInputError.innerHTML = 'Veuillez saisir un prénom valide';
+                        }
+                    });
 
-                lastNameInput.addEventListener('change', function lastNameInputValidator() {
+                    //Input adresse test
 
-                    let regexName = new RegExp("^[\\D](\\w+)[\\D]$")
-                    let lastNameValue = lastNameInput.value;
+                    let addressInput = document.getElementById('address');
+                    let addressInputError = document.getElementById('addressErrorMsg')
 
-                    console.log(regexName.test(lastNameValue))
+                    addressInput.addEventListener('change', function () {
+                        let regexAdress = new RegExp("^([\\d]{1,6})(\\s(\\w+))+$")
+                        let adressInputValue = addressInput.value;
 
-                    if (regexName.test(lastNameValue)) {
-                        lastNameInputError.style.display = 'none';
-                    } else {
-                        lastNameInputError.style.display = 'block';
-                        lastNameInputError.innerHTML = 'Veuillez saisir un prénom valide';
-                    }
-                });
+                        console.log(regexAdress.test(adressInputValue))
 
-                //Input adresse test
+                        if (regexAdress.test(adressInputValue)) {
+                            addressInputError.style.display = 'none';
+                        } else {
+                            addressInputError.style.display = 'block';
+                            addressInputError.innerHTML = "Veuillez saisir une adresse valide.";
+                        }
+                    });
 
-                let addressInput = document.getElementById('address');
-                let addressInputError = document.getElementById('addressErrorMsg')
+                    //Input ville test
 
-                addressInput.addEventListener('change', function adressInputValidator() {
-                    let regexAdress = new RegExp("^([\\d]{1,6})(\\s(\\w+))+$")
-                    let adressInputValue = addressInput.value;
+                    let cityInput = document.getElementById('city');
+                    let cityInputError = document.getElementById('cityErrorMsg');
 
-                    console.log(regexAdress.test(adressInputValue))
+                    cityInput.addEventListener('change', function () {
+                        let regexCity = new RegExp("^[\\D](\\w+)[\\D]$")
+                        let cityInputValue = cityInput.value;
 
-                    if (regexAdress.test(adressInputValue)) {
-                        addressInputError.style.display = 'none';
-                    } else {
-                        addressInputError.style.display = 'block';
-                        addressInputError.innerHTML = "Veuillez saisir une adresse valide.";
-                    }
-                });
+                        console.log(regexCity.test(cityInputValue))
 
-                //Input ville test
+                        if (regexCity.test(cityInputValue)) {
+                            cityInputError.style.display = 'none';
+                        } else {
+                            cityInputError.style.display = 'block';
+                            cityInputError.innerHTML = "Veuillez saisir une ville valide. ";
+                        }
+                    });
 
-                let cityInput = document.getElementById('city');
-                let cityInputError = document.getElementById('cityErrorMsg');
-
-                cityInput.addEventListener('change', function cityInputValidator() {
-                    let regexAdress = new RegExp("^([a-zA-Z\u0080-\u024F]+(?:. |-| |'))*[a-zA-Z\u0080-\u024F]*$")
-                    let cityInputValue = cityInput.value;
-
-                    console.log(regexAdress.test(cityInputValue))
-
-                    if (regexAdress.test(cityInputValue)) {
-                        cityInputError.style.display = 'none';
-                    } else {
-                        cityInputError.style.display = 'block';
-                        cityInputError.innerHTML = "Veuillez saisir une ville valide. ";
-                    }
-                });
-
-                //Input mail test
-                let mailInput = document.getElementById('email');
-                let mailError = document.getElementById('emailErrorMsg');
-
-                let test3 = mailInput.addEventListener('change', function(){
-
-                    let re = new RegExp("^(\\w+)[a-zA-Z0-9\-\._]+@(\\w+)\\.(\\w+)$");
-                    let mailValue = mailInput.value;
-
-                    let testInput = re.test(mailValue);
- 
-                    if (testInput) {
-                        mailError.style.display = 'none';
- 
-                    }else {
-                        mailError.style.display = 'block';
-                        mailError.innerHTML = 'Veuillez saisir une adresse email valide';
-                    }
+                    //Input mail test
+                    let mailInput = document.getElementById('email');
+                    let mailError = document.getElementById('emailErrorMsg');
+           
                     
-                });
+
+                    mailInput.addEventListener('change', function () {
+                        let mailValue = mailInput.value;
+                        let regexEmail = new RegExp("^(\\w+)[a-zA-Z0-9\-\._]+@(\\w+)\\.(\\w+)$");
+                        
+                        if (regexEmail.test(mailValue)) {
+                            mailError.style.display = 'none';
+                            
+                        } else {
+                            mailError.style.display = 'block';
+                            mailError.innerHTML = 'Veuillez saisir une adresse email valide';
+                            
+                        }
+                        
+                    });
+
+                    
+                    
+
+
+
 
                 
-              
-               
                 
-            };
-            
-            validator();
-            console.log(validator)
 
-            
+
                 //////////////////////RECUPERATION DES DONNEE DU FORMULAIRE/////////////////////
                 function initFormAddEventListener() {
 
                     const btnCommander = document.getElementById('order');
+                
+                    let products = [];
+                
+                    for(let m = 0;m < produitPanier.length; m++){
+                        products.push(produitPanier[m].objectId)
+                    };
+                    
+                
 
-                    btnCommander.addEventListener('click', function () {
 
+                    btnCommander.addEventListener('click', function (e) {
+                       e.preventDefault();
                         let prenom = document.getElementById('firstName');
                         let nom = document.getElementById('lastName');
                         let addresse = document.getElementById('address');
                         let ville = document.getElementById('city');
                         let mail = document.getElementById('email');
+                
+
+                        /////////////Test pour envoie//////////
+                        let regexName = new RegExp("^[\\D](\\w+)[\\D]$");
+                        let firstNameValue = firstNameInput.value;
+                        let validatorName = regexName.test(firstNameValue);
+
+                        let mailValue = mailInput.value;
+                        let regexEmail = new RegExp("^(\\w+)[a-zA-Z0-9\-\._]+@(\\w+)\\.(\\w+)$");
+                        let validatorEmail = regexEmail.test(mailValue);
+
+                        let regexAdress = new RegExp("^([\\d]{1,6})(\\s(\\w+))+$");
+                        let adressInputValue = addressInput.value;
+                        let validatorAdress = regexAdress.test(adressInputValue);
+                     
+
+                        let regexLastName = new RegExp("^[\\D](\\w+)[\\D]$");
+                        let lastNameValue = lastNameInput.value;
+                        let validatorLastName = regexLastName.test(lastNameValue);
+
+                        let regexCity = new RegExp("^[\\D](\\w+)[\\D]$");
+                        let cityInputValue = cityInput.value;
+                        let validatorCity = regexCity.test(cityInputValue);
+                        console.log(validatorCity)
+                        //////////////////
+
+                        /////ENVOIE DE LA COMMANDE SI VALIDE/////
+                if(validatorEmail && validatorName && validatorLastName && validatorAdress && validatorCity){
+                        const orders = {
+                
+                            contact: {
+                                firstName: prenom.value,
+                                lastName: nom.value,
+                                address: addresse.value,
+                                city: ville.value,
+                                email: mail.value
+                
+                            },
+                            products : products,
+                  
+                
+                        }
+                
+                
+                        fetch("http://localhost:3000/api/products/order",{
+                        method: "POST",
+                        headers: {
+                            "Content-Type": "application/json",
+                        },
+                        body: JSON.stringify(orders),
+                        })
+                        .then(response => response.json())
+                        .then(data =>{
+                            let confirmationUrl = "./confirmation.html?id=" + data.orderId;
+                          window.location.href = confirmationUrl;
+                          localStorage.clear();
+                           
+                        })
                         
-                        let contact = {
-
-                            firstName: prenom.value,
-                            lastName: nom.value,
-                            address: addresse.value,
-                            city: ville.value,
-                            email: mail.value
-
-                        };
-
-
-
-                    });
-
-
-
+                }else{
+                    alert('Verifié vos information saisi')
+                    
                 }
-
+                        
+                
+                
+                
+                    });
+                
+                
+                
+                }
+                
                 initFormAddEventListener();
 
 
@@ -325,3 +385,5 @@ function panier() {
 };
 
 panier();
+
+
