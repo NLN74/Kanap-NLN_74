@@ -1,8 +1,8 @@
 
-//récupération des la key Canap avec c'est object
+//récupération de la key Canap avec c'est objet
 let produitPanier = JSON.parse(localStorage.getItem("Canap"));
-//mise en place de l'HTML
 
+//mise en place de l'HTML
 function panier() {
     for (let i = 0; i < produitPanier.length; i++) {
 
@@ -167,137 +167,137 @@ function panier() {
 
                 const cart_order_from_question = document.querySelectorAll('.cart__order__form__question');
 
-                
-                    //Input prénom test
 
-                    let firstNameInput = document.getElementById('firstName');
-                    let firstNameErrorMsg = document.getElementById('firstNameErrorMsg');
-                    firstNameInput.addEventListener('change', function firstNameInputValidator() {
+                //Input prénom test
 
-                        let regexName = new RegExp("^[\\D](\\w+)[\\D]$")
-                        let firstNameValue = firstNameInput.value;
+                let firstNameInput = document.getElementById('firstName');
+                let firstNameErrorMsg = document.getElementById('firstNameErrorMsg');
+                firstNameInput.addEventListener('change', function firstNameInputValidator() {
 
-                        console.log(regexName.test(firstNameValue))
+                    let regexName = new RegExp("^[\\D](\\w+)[\\D]$")
+                    let firstNameValue = firstNameInput.value;
 
-                        if (regexName.test(firstNameValue)) {
-                            firstNameErrorMsg.style.display = 'none';
-                        } else {
-                            firstNameErrorMsg.style.display = 'block';
-                            firstNameErrorMsg.innerHTML = 'Veuillez saisir un prénom valide';
-                        }
-                    });
+                    console.log(regexName.test(firstNameValue))
 
-                    //Input nom test
+                    if (regexName.test(firstNameValue)) {
+                        firstNameErrorMsg.style.display = 'none';
+                    } else {
+                        firstNameErrorMsg.style.display = 'block';
+                        firstNameErrorMsg.innerHTML = 'Veuillez saisir un prénom valide';
+                    }
+                });
 
-                    let lastNameInput = document.getElementById('lastName');
-                    let lastNameInputError = document.getElementById('lastNameErrorMsg');
+                //Input nom test
 
-                    lastNameInput.addEventListener('change', function lastNameInputValidator() {
+                let lastNameInput = document.getElementById('lastName');
+                let lastNameInputError = document.getElementById('lastNameErrorMsg');
 
-                        let regexName = new RegExp("^[\\D](\\w+)[\\D]$")
-                        let lastNameValue = lastNameInput.value;
+                lastNameInput.addEventListener('change', function lastNameInputValidator() {
 
-                        console.log(regexName.test(lastNameValue))
+                    let regexName = new RegExp("^[\\D](\\w+)[\\D]$")
+                    let lastNameValue = lastNameInput.value;
 
-                        if (regexName.test(lastNameValue)) {
-                            lastNameInputError.style.display = 'none';
-                        } else {
-                            lastNameInputError.style.display = 'block';
-                            lastNameInputError.innerHTML = 'Veuillez saisir un prénom valide';
-                        }
-                    });
+                    console.log(regexName.test(lastNameValue))
 
-                    //Input adresse test
+                    if (regexName.test(lastNameValue)) {
+                        lastNameInputError.style.display = 'none';
+                    } else {
+                        lastNameInputError.style.display = 'block';
+                        lastNameInputError.innerHTML = 'Veuillez saisir un prénom valide';
+                    }
+                });
 
-                    let addressInput = document.getElementById('address');
-                    let addressInputError = document.getElementById('addressErrorMsg')
+                //Input adresse test
 
-                    addressInput.addEventListener('change', function () {
-                        let regexAdress = new RegExp("^([\\d]{1,6})(\\s(\\w+))+$")
-                        let adressInputValue = addressInput.value;
+                let addressInput = document.getElementById('address');
+                let addressInputError = document.getElementById('addressErrorMsg')
 
-                        console.log(regexAdress.test(adressInputValue))
+                addressInput.addEventListener('change', function () {
+                    let regexAdress = new RegExp("^([\\d]{1,6})(\\s(\\w+))+$")
+                    let adressInputValue = addressInput.value;
 
-                        if (regexAdress.test(adressInputValue)) {
-                            addressInputError.style.display = 'none';
-                        } else {
-                            addressInputError.style.display = 'block';
-                            addressInputError.innerHTML = "Veuillez saisir une adresse valide.";
-                        }
-                    });
+                    console.log(regexAdress.test(adressInputValue))
 
-                    //Input ville test
+                    if (regexAdress.test(adressInputValue)) {
+                        addressInputError.style.display = 'none';
+                    } else {
+                        addressInputError.style.display = 'block';
+                        addressInputError.innerHTML = "Veuillez saisir une adresse valide.";
+                    }
+                });
 
-                    let cityInput = document.getElementById('city');
-                    let cityInputError = document.getElementById('cityErrorMsg');
+                //Input ville test
 
-                    cityInput.addEventListener('change', function () {
-                        let regexCity = new RegExp("^[\\D](\\w+)[\\D]$")
-                        let cityInputValue = cityInput.value;
+                let cityInput = document.getElementById('city');
+                let cityInputError = document.getElementById('cityErrorMsg');
 
-                        console.log(regexCity.test(cityInputValue))
+                cityInput.addEventListener('change', function () {
+                    let regexCity = new RegExp("^[\\D](\\w+)[\\D]$")
+                    let cityInputValue = cityInput.value;
 
-                        if (regexCity.test(cityInputValue)) {
-                            cityInputError.style.display = 'none';
-                        } else {
-                            cityInputError.style.display = 'block';
-                            cityInputError.innerHTML = "Veuillez saisir une ville valide. ";
-                        }
-                    });
+                    console.log(regexCity.test(cityInputValue))
 
-                    //Input mail test
-                    let mailInput = document.getElementById('email');
-                    let mailError = document.getElementById('emailErrorMsg');
-           
-                    
+                    if (regexCity.test(cityInputValue)) {
+                        cityInputError.style.display = 'none';
+                    } else {
+                        cityInputError.style.display = 'block';
+                        cityInputError.innerHTML = "Veuillez saisir une ville valide. ";
+                    }
+                });
 
-                    mailInput.addEventListener('change', function () {
-                        let mailValue = mailInput.value;
-                        let regexEmail = new RegExp("^(\\w+)[a-zA-Z0-9\-\._]+@(\\w+)\\.(\\w+)$");
-                        
-                        if (regexEmail.test(mailValue)) {
-                            mailError.style.display = 'none';
-                            
-                        } else {
-                            mailError.style.display = 'block';
-                            mailError.innerHTML = 'Veuillez saisir une adresse email valide';
-                            
-                        }
-                        
-                    });
+                //Input mail test
+                let mailInput = document.getElementById('email');
+                let mailError = document.getElementById('emailErrorMsg');
 
-                    
-                    
+
+
+                mailInput.addEventListener('change', function () {
+                    let mailValue = mailInput.value;
+                    let regexEmail = new RegExp("^(\\w+)[a-zA-Z0-9\-\._]+@(\\w+)\\.(\\w+)$");
+
+                    if (regexEmail.test(mailValue)) {
+                        mailError.style.display = 'none';
+
+                    } else {
+                        mailError.style.display = 'block';
+                        mailError.innerHTML = 'Veuillez saisir une adresse email valide';
+
+                    }
+
+                });
 
 
 
 
-                
-                
+
+
+
+
+
 
 
                 //////////////////////RECUPERATION DES DONNEE DU FORMULAIRE/////////////////////
-                function initFormAddEventListener() {
+                function initFormAddEventListenerBtnCommander() {
 
                     const btnCommander = document.getElementById('order');
-                
+
                     let products = [];
-                
-                    for(let m = 0;m < produitPanier.length; m++){
+
+                    for (let m = 0; m < produitPanier.length; m++) {
                         products.push(produitPanier[m].objectId)
                     };
-                    
-                
+
+
 
 
                     btnCommander.addEventListener('click', function (e) {
-                       e.preventDefault();
+                        e.preventDefault();
                         let prenom = document.getElementById('firstName');
                         let nom = document.getElementById('lastName');
                         let addresse = document.getElementById('address');
                         let ville = document.getElementById('city');
                         let mail = document.getElementById('email');
-                
+
 
                         /////////////Test pour envoie//////////
                         let regexName = new RegExp("^[\\D](\\w+)[\\D]$");
@@ -311,7 +311,7 @@ function panier() {
                         let regexAdress = new RegExp("^([\\d]{1,6})(\\s(\\w+))+$");
                         let adressInputValue = addressInput.value;
                         let validatorAdress = regexAdress.test(adressInputValue);
-                     
+
 
                         let regexLastName = new RegExp("^[\\D](\\w+)[\\D]$");
                         let lastNameValue = lastNameInput.value;
@@ -324,53 +324,53 @@ function panier() {
                         //////////////////
 
                         /////ENVOIE DE LA COMMANDE SI VALIDE/////
-                if(validatorEmail && validatorName && validatorLastName && validatorAdress && validatorCity){
-                        const orders = {
-                
-                            contact: {
-                                firstName: prenom.value,
-                                lastName: nom.value,
-                                address: addresse.value,
-                                city: ville.value,
-                                email: mail.value
-                
-                            },
-                            products : products,
-                  
-                
+                        if (validatorEmail && validatorName && validatorLastName && validatorAdress && validatorCity) {
+                            const orders = {
+
+                                contact: {
+                                    firstName: prenom.value,
+                                    lastName: nom.value,
+                                    address: addresse.value,
+                                    city: ville.value,
+                                    email: mail.value
+
+                                },
+                                products: products,
+
+
+                            }
+
+                            //Utilisation de la Method POST via un Fetch pour envoyez au serveur les valeurs
+                            fetch("http://localhost:3000/api/products/order", {
+                                method: "POST",
+                                headers: {
+                                    "Content-Type": "application/json",
+                                },
+                                body: JSON.stringify(orders),
+                            })
+                                .then(response => response.json())
+                                .then(data => {
+                                    let confirmationUrl = "./confirmation.html?id=" + data.orderId;
+                                    window.location.href = confirmationUrl;
+                                    localStorage.clear();
+
+                                })
+
+                        } else {
+                            alert('Verifié vos information saisi')
+
                         }
-                
-                
-                        fetch("http://localhost:3000/api/products/order",{
-                        method: "POST",
-                        headers: {
-                            "Content-Type": "application/json",
-                        },
-                        body: JSON.stringify(orders),
-                        })
-                        .then(response => response.json())
-                        .then(data =>{
-                            let confirmationUrl = "./confirmation.html?id=" + data.orderId;
-                          window.location.href = confirmationUrl;
-                          localStorage.clear();
-                           
-                        })
-                        
-                }else{
-                    alert('Verifié vos information saisi')
-                    
-                }
-                        
-                
-                
-                
+
+
+
+
                     });
-                
-                
-                
+
+
+
                 }
-                
-                initFormAddEventListener();
+
+                initFormAddEventListenerBtnCommander();
 
 
 

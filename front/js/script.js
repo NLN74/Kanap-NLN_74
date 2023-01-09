@@ -40,10 +40,7 @@ fetch("http://localhost:3000/api/products/")
             title3.innerHTML = (value[i]).name
             paragraphe.innerHTML = (value[i]).description
 
-            //Ajout de l'id cartsItems
-
-            //cartsItems.setAttribute('id', "0"+(i))
-            //Liens Hypertext
+            //Liens Hypertext dirigeant vers la page Produit avec le bon ID
             cartsItems.setAttribute('href', "../html/product.html?id=" + (_id))
 
 

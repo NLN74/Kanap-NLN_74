@@ -61,6 +61,7 @@ let reponse = await fetch('http://localhost:3000/api/products/' + idObject)
 
         const quantity = document.getElementById('quantity');
 
+        //Ajout au panier via la fonction addEventListener
         addToPaner.addEventListener('click', function (event) {
 
             event.preventDefault()
@@ -85,9 +86,10 @@ let reponse = await fetch('http://localhost:3000/api/products/' + idObject)
 
                 for (let i = 0; i < produitPanier.length; i++) {
 
+                    //Si le ProduitPanier avec la Bonne Id = Id listObject et Couleur du produit = a celle du panier alors juste modifié la quantité
                     if (produitPanier[i].objectId == listObject._id && colors.value == produitPanier[i].objectColors) {
                         console.log('produit trouver')
-                        
+
 
                         produitPanier[i].objectNumber += parseInt(quantity.value, 0);
                         produitTrouver = true;
@@ -96,6 +98,7 @@ let reponse = await fetch('http://localhost:3000/api/products/' + idObject)
 
 
                 }
+                //Si le produit Produit n'existe pas dans le LocalStorage alors le créer
                 if (produitTrouver == false) {
                     produitPanier.push(contenant);
                 }
@@ -108,9 +111,9 @@ let reponse = await fetch('http://localhost:3000/api/products/' + idObject)
 
                 produitPanier = [];
                 produitPanier.push(contenant);
-               
+
             }
-            
+
             localStorage.setItem('Canap', JSON.stringify(produitPanier));
             alert(quantity.value + " " + listObject.name + " ajoutés au panier!!");
         });
