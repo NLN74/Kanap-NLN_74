@@ -30,6 +30,8 @@ let reponse = await fetch('http://localhost:3000/api/products/' + idObject)
         document
             .getElementById('price')
             .innerHTML = listObject.price;
+
+
         //Ajout de la liste déroulante 
         const colorArray = listObject.colors;
 

@@ -24,6 +24,7 @@ fetch("http://localhost:3000/api/products/")
 
             let article = document.createElement("article")
             let image = document.createElement("img")
+            image.setAttribute('alt', (value[i]).altTxt)
             let title3 = document.createElement("h3")
             let paragraphe = document.createElement("p")
 
